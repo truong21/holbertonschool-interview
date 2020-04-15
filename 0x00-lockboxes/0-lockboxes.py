@@ -16,7 +16,7 @@ def canUnlockAll(boxes):
     key_stack = [0]
     unlocked = [1] + [0] * (len(boxes) - 1)
     while key_stack:
-        p = stack.pop()
+        p = key_stack.pop()
         for key in boxes[p]:
             if key > 0 and key < len(boxes) and unlocked[key] == 0:
                 unlocked[key] = 1
