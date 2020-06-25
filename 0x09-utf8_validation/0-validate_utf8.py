@@ -1,20 +1,20 @@
 #!/usr/bin/python3
+
+
 def validUTF8(data):
-    count = 0
-    for num in data:
-        mask = 0b10000000
-        if not count:
-            while (mask & num):
-                count += 1
+    num = 0
+    for n in data:
+        mask = 1 << 7
+        if not num:
+            while mask & n:
+                num += 1
                 mask >>= 1
-            if count > 4:
+        if not num:
+            continue
+        if num == 1 or num > 4:
+            return False
+        else:
+            if n >> 6 != 0b10:
                 return False
-            if count:
-                count -= 1
-                if count == 0:
-                    return False
-        elif count > 0:
-            if num >> 6 != 2:
-                return False
-            count -= 1
-    return not count
+        num -= 1
+    return num == 0
