@@ -7,7 +7,7 @@ def validUTF8(data):
             while (mask & num):
                 count += 1
                 mask >>= 1
-            if count > 5:
+            if count > 4:
                 return False
             if count:
                 count -= 1
