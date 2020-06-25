@@ -14,7 +14,7 @@ def validUTF8(data):
         if num == 1 or num > 4:
             return False
         else:
-            if n >> 6 != 0b10:
+            if n >> 6 != 2:
                 return False
         num -= 1
     return num == 0
